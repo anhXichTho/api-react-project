@@ -16,7 +16,7 @@ const register = (username, password, dob) => {
 const login = (username, password) => {
     const user = users.find(user => user.username === username && user.password === password);
     if (user) {
-        return { success: true, message: 'Login successful' };
+        return {username, password};
     }
     return { success: false, message: 'Invalid credentials' };
 };
