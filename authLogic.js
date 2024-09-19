@@ -35,5 +35,17 @@ const login = (username, password) => {
     }
     return { success: false, message: 'Invalid credentials' };
 };
+const resetPassword = (username) => {
+    const users = readFile();
+    const user = users.find(user => user.username === username);
 
-module.exports = { register, login };
+    if (!user) {
+        return { success: false, message: 'Username not found' };
+    }
+
+    user.password = '123456'; // Đặt lại mật khẩu
+    writeFile(users);
+
+    return { success: true, message: 'Password reset successful', newPassword: '123456' };
+};
+module.exports = { register, login, resetPassword };

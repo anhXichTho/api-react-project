@@ -34,7 +34,15 @@ app.post('/login', (req, res) => {
         res.status(401).json(result);
     }
 });
-
+app.post('/forgot-password', (req, res) => {
+    const { username } = req.body;
+    const result = authLogic.resetPassword(username);
+    if (result.success) {
+        res.json(result);
+    } else {
+        res.status(404).json(result);
+    }
+});
 // Quản lý bài viết
 app.post('/posts', (req, res) => {
     const { title, content, username, status, type } = req.body;
