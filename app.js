@@ -54,6 +54,10 @@ app.get('/posts', (req, res) => {
     res.json(postLogic.getPosts());
 });
 
+app.get('/likes', (req, res) => {
+    res.json(likeLogic.getLikes());
+});
+
 app.get('/posts/:id', (req, res) => {
     const post = postLogic.getPostById(+req.params.id);
     if (post) {
