@@ -15,8 +15,8 @@ app.listen(3000, () => {
 
 // Đăng ký
 app.post('/register', (req, res) => {
-    const { username, password, dob } = req.body;
-    const result = authLogic.register(username, password, dob);
+    const { username, password, dob, image } = req.body;
+    const result = authLogic.register(username, password, dob,image);
     if (result.success) {
         res.json(result);
     } else {

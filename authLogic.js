@@ -13,14 +13,14 @@ const writeFile = (data) => {
     fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf8');
 };
 
-const register = (username, password, dob) => {
+const register = (username, password, dob, image) => {
     const users = readFile();
     const userExists = users.some(user => user.username === username);
     if (userExists) {
         return { success: false, message: 'Username already exists' };
     }
 
-    const user = { username, password, dob };
+    const user = { username, password, dob, image };
     users.push(user);
     writeFile(users);
 
