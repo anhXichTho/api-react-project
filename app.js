@@ -111,3 +111,17 @@ app.get('/posts/:id/likes', (req, res) => {
     const likes = likeLogic.getLikesByPost(+req.params.id);
     res.json(likes);
 });
+
+
+app.put('/users/:username', (req, res) => {
+    const { username } = req.params;
+    const updatedData = req.body;
+
+    const result = authLogic.updateUser(username, updatedData);
+
+    if (result.success) {
+        res.json(result);
+    } else {
+        res.status(404).json(result);
+    }
+});
